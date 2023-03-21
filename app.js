@@ -6,9 +6,11 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
+
 // Routers require
 const indexRouter = require('./routes/index');
 const showsRouter = require('./routes/shows');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -17,6 +19,9 @@ const app = express();
 //   origin: process.env.ORIGIN
 // }));
 app.use(cors());
+// app.use(cors({
+//   origin: process.env.ORIGIN
+// }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -25,6 +30,7 @@ app.use(cookieParser());
 // routes intro
 app.use('/', indexRouter);
 app.use('/shows', showsRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

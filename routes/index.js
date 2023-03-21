@@ -4,7 +4,8 @@ const router = require('express').Router();
 // @route   GET /
 // @access  Public
 router.get('/', (req, res, next) => {
-  res.status(200).json({ message: 'Connected' });
+  //res.status(200).json({ message: 'Connected' });
+  res.send('REST API')
 });
 
 module.exports = router;
