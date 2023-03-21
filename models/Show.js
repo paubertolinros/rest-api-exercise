@@ -18,7 +18,7 @@ const showSchema = new Schema(
     },
      image: {
        type: String,
-       default: ""
+       default: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1362px-Placeholder_view_vector.svg.png"
     },
       description: {
       type: String,

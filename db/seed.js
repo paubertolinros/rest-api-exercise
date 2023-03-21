@@ -36,6 +36,9 @@ mongoose
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .then(() => {
+    return Show.deleteMany({})
+  })
+  .then(() => {
     return Show.create(shows)
   })
   .then((created) => {

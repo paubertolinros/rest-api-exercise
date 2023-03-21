@@ -42,6 +42,22 @@ router.post('/', async (req, res, next) => {
 // @desc    Edit one show
 // @route   PUT /shows/:showId
 // @access  Public
+router.put('/:showId', async (req, res, next) => {
+  const { showId } = req.params;
+  try {
+    const editedShow = await Show.findByIdAndUpdate(showId, req.body, { new: true });
+    console.log(editedShow);
+    //res.redirect(`/shows/${showId}`) ==> only to see on Postman if we edited right
+    res.status(204).json({message : 'OK'});
+  } catch (error) {
+    next(error)
+  }
+});
+
+
+// @desc    Delete one show
+// @route   DELETE /shows/:showId
+// @access  Public
 router.delete('/:showId', async (req, res, next) => {
   const { showId } = req.params;
   try {
@@ -52,18 +68,5 @@ router.delete('/:showId', async (req, res, next) => {
   }
 });
 
-// @desc    Delete one show
-// @route   DELETE /shows/:showId
-// @access  Public
-router.put('/:showId', async (req, res, next) => {
-  const { showId } = req.params;
-  try {
-    const editedShow = await Show.findByIdAndUpdate(showId, req.body, { new: true });
-    console.log(editedShow);
-    res.status(204).json(editedShow);
-  } catch (error) {
-    next(error)
-  }
-});
 
 module.exports = router;
