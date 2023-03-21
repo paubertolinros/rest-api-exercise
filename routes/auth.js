@@ -41,7 +41,7 @@ router.post('/signup', async (req, res, next) => {
 });
 
 // @desc    LOG IN new user
-// @route   POST /auth/signup
+// @route   POST /auth/login
 // @access  Public
 router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
